@@ -72,6 +72,32 @@ body{margin:0;font-family:Inter,system-ui;background:#f4f8ff;color:#1f2937;line-
 .grid{grid-template-columns:repeat(4,1fr)}
 .card img{height:180px}
 }
+ /* ===== Additional services mobile layout ===== */
+
+/* Mobile: single column */
+.additional-grid{
+grid-template-columns:1fr;
+}
+
+/* Tablet: 2 columns */
+@media(min-width:600px){
+.additional-grid{
+grid-template-columns:repeat(2,1fr);
+}
+}
+
+/* Desktop: keep original multi-column look */
+@media(min-width:1000px){
+.additional-grid{
+grid-template-columns:repeat(3,1fr);
+}
+}
+
+@media(min-width:1300px){
+.additional-grid{
+grid-template-columns:repeat(4,1fr);
+}
+}
 </style>
 </head>
 
@@ -168,7 +194,7 @@ We provide assistance for Dharani land records, affidavits, job applications,
 bank services and entrance exam registrations in Moula Ali, ECIL and nearby areas.
 </p>
 
-<div class="grid">
+<div class="grid additional-grid">
 
 <div class="card">
 <div class="card-content">
