@@ -123,49 +123,8 @@
             100% { transform: translateY(0px) rotate(0deg); }
         }
 
-        /* Navigation */
-        .navbar {
-            background: rgba(15, 23, 42, 0.8);
-            backdrop-filter: blur(10px);
-            padding: 1rem 0;
-            border-bottom: 1px solid var(--color-border);
-            z-index: 1000;
-        }
+        
 
-        .navbar-brand {
-            font-weight: 700;
-            font-size: 1.8rem;
-            background: var(--gradient-primary);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            letter-spacing: -0.5px;
-        }
-
-        .nav-link {
-            color: var(--color-text-medium);
-            font-weight: 500;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--gradient-primary);
-            transition: width 0.3s ease;
-        }
-
-        .nav-link:hover {
-            color: var(--color-text-light);
-        }
-
-        .nav-link:hover::after {
-            width: 100%;
-        }
 
         /* Hero Section */
         .hero-section {
@@ -686,10 +645,25 @@
             font-weight: bold;
             box-shadow: 0 4px 10px rgba(0,0,0,0.2);
         }
+		.nav {
+    background: #0f172a;
+    color: white;
+    padding: 14px;
+    font-weight: 800;
+    font-size: 20px;
+    position: sticky;
+    top: 0;
+    z-index: 99;
+
+    display: flex;
+    justify-content: center;   /* horizontal center */
+    align-items: center;       /* vertical center */
+}
     </style>
 </head>
 <body>
     <!-- Particles Background -->
+	<div class="nav">KS DIGITAL SERVICES</div>
     <div id="particles-js"></div>
  
     
@@ -700,8 +674,7 @@
 
 <!-- 1 LOCAL PRINTING (8) -->
 <div class="category category-general">
-<h2>Local</h2>
-<button onclick="window.open('http://localhost:8080/pvc','_blank')">pvc</button>
+<h2>Local</h2><button onclick="window.open('http://localhost:8080/pvc','_blank')">pvc</button>
 <button onclick="window.open('http://localhost:8080/api/temp','_blank')">lamination</button>
 <button onclick="window.open('http://localhost:8080/passport_photo','_blank')">Passport Photo</button>
 <button onclick="window.open('https://www.adobe.com/express/feature/image/remove-background','_blank')">Photo bg remove</button>
