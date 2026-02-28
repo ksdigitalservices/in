@@ -12,11 +12,8 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
 <style>
-    *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
+*{margin:0;padding:0;box-sizing:border-box;}
+
 body{
     font-family:Inter,sans-serif;
     background:#f8fafc;
@@ -24,26 +21,34 @@ body{
     line-height:1.55;
 }
 
-/* NAV */
-.navbar{background:#fff;border-bottom:1px solid #e2e8f0;}
-.navbar-brand{font-weight:700;color:#0f172a}
+/* NAV (same as index) */
+.nav{
+    background:#0f172a;
+    color:#fff;
+    height:52px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:800;
+    font-size:20px;
+    letter-spacing:1px;
+    position:sticky;
+    top:0;
+    z-index:999;
+}
 
-/* HERO — SHORT */
+/* HERO SHORT */
 .hero{
     background:linear-gradient(120deg,#2563eb,#1e40af);
     padding:30px 15px;
     text-align:center;
     color:white;
 }
-.hero h1{
-    font-size:2.1rem;
-    font-weight:800;
-    margin-bottom:6px;
-}
+.hero h1{font-size:2.1rem;font-weight:800;margin-bottom:6px;}
 .hero p{margin:0;font-size:15px}
 
 /* SECTIONS */
-.section{padding:45px 20px}
+.section{padding:45px 20px;}
 .section h2{
     text-align:center;
     font-weight:700;
@@ -60,7 +65,6 @@ body{
     border:1px solid #e2e8f0;
     height:100%;
 }
-.card-clean h5{margin-bottom:6px;font-size:18px}
 
 /* PROCESS */
 .process-step{
@@ -75,47 +79,39 @@ body{
 .footer{
     background:#0f172a;
     color:#fff;
-    padding:30px 20px;
+    padding:18px;
     text-align:center;
-    font-size:14px;
 }
 
-/* STICKY CTA */
+/* BUTTONS */
 .btn-main{
-    padding:10px 22px;
-    border-radius:25px;
-    font-weight:600;
-    margin:3px;
+    padding:12px 26px;
+    border-radius:30px;
+    font-weight:700;
+    margin:4px;
     text-decoration:none;
     display:inline-block;
     font-size:15px;
+    color:#fff;
+    box-shadow:0 4px 10px rgba(0,0,0,.15);
+    transition:.2s ease;
 }
-.btn-wa{background:#22c55e;color:#fff}
-.btn-call{background:#0f172a;color:#fff}
+.btn-wa{background:#22c55e;}
+.btn-wa:hover{background:#16a34a;transform:translateY(-1px);}
+.btn-call{background:#0f172a;}
+.btn-call:hover{background:#020617;transform:translateY(-1px);}
+.btn-map{background:#2563eb;}
+.btn-map:hover{background:#1e40af;transform:translateY(-1px);}
 
+/* STICKY BAR */
 .sticky-bar{
     position:fixed;
     bottom:0;
     left:0;
     width:100%;
-    background:#fff;
-    border-top:1px solid #e2e8f0;
-    padding:8px;
-    text-align:center;
-    z-index:999;
-}
-.nav{
     background:#0f172a;
-    color:#fff;
-    height:52px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-weight:800;
-    font-size:20px;
-    letter-spacing:1px;
-    position:sticky;
-    top:0;
+    padding:10px;
+    text-align:center;
     z-index:999;
 }
 </style>
@@ -125,7 +121,6 @@ body{
 
 <div class="nav">KS DIGITAL SERVICES</div>
 
-<!-- HERO -->
 <section class="hero">
 <h1>Passport Services in Moula Ali & ECIL Hyderabad</h1>
 <p>New Passport • Renewal • Tatkal</p>
@@ -180,14 +175,13 @@ body{
 </section>
 
 <footer class="footer">
-<p>📞 +91 7893845696</p>
-<p>📍 Tirumala Nagar, Moula Ali, Hyderabad - 500040</p>
-<a href="/" style="color:#93c5fd;">Back to Home</a>
+<p>© 2026 KS Digital Services</p>
 </footer>
 
 <div class="sticky-bar">
-<a class="btn-main btn-call" href="tel:7893845696">Call</a>
-<a class="btn-main btn-wa" href="https://wa.me/917893845696">WhatsApp</a>
+<a class="btn-main btn-call" href="tel:7893845696"><i class="bi bi-telephone"></i> Call</a>
+<a class="btn-main btn-wa" href="https://wa.me/917893845696"><i class="bi bi-whatsapp"></i> WhatsApp</a>
+<a class="btn-main btn-map" href="https://maps.app.goo.gl/r2BUAfa6WnhP6Yf79" target="_blank"><i class="bi bi-geo-alt-fill"></i> Location</a>
 </div>
 
 </body>
