@@ -20,6 +20,26 @@
 </script>
 
 
+  <!-- Event snippet for Click to call conversion page
+In your html page, add the snippet and call gtag_report_conversion when someone clicks on the chosen link or button. -->
+<script>
+function gtag_report_conversion(url) {
+  var callback = function () {
+    if (typeof(url) != 'undefined') {
+      window.location = url;
+    }
+  };
+  gtag('event', 'conversion', {
+      'send_to': 'AW-17974532763/A8JoCLuyyP4bEJu19vpC',
+      'value': 1.0,
+      'currency': 'INR',
+      'event_callback': callback
+  });
+  return false;
+}
+</script>
+
+
 <meta name="description" content="KS Digital Services is a trusted printing and internet center in Moula Ali Hyderabad offering printing, scanning, lamination, PVC card printing and document upload services.">
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
