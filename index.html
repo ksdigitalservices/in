@@ -202,8 +202,10 @@ text-decoration:none;
 /* SCROLL SERVICES */
 
 .scroll-services{
-overflow:hidden;
-position:relative;
+  display: flex;
+  flex-wrap: wrap;   /* moves items to next line when overflow */
+  gap: 10px;         /* vertical & horizontal space between buttons */
+  position: relative;
 }
 
 .scroll-track{
@@ -321,8 +323,6 @@ KS Digital Services provides TTD ticket booking, PF withdrawal services, passpor
 
 <div class="scroll-services">
 
-<a href="/ttd-ticket-booking-moula-ali" class="service-btn blink">TTD Ticket Booking</a>
-
 <a href="/passport-moula-ali.html" class="service-btn">Passport Application</a>
 
 <a href="/pan-card-moula-ali.html" class="service-btn">PAN Card Apply</a>
@@ -330,10 +330,15 @@ KS Digital Services provides TTD ticket booking, PF withdrawal services, passpor
 <a href="/aadhaar-address-update.html" class="service-btn">Aadhaar Update</a>
   
 <a href="/ttd-ticket-booking-moula-ali" class="service-btn blink">TTD Ticket Booking</a>
-  
-<a href="/passport-moula-ali.html" class="service-btn">Passport Application</a>
+
+  <a href="/passport-moula-ali.html" class="service-btn">Passport Application</a>
 
 <a href="/pan-card-moula-ali.html" class="service-btn">PAN Card Apply</a>
+
+<a href="/aadhaar-address-update.html" class="service-btn">Aadhaar Update</a>
+  
+<a href="/ttd-ticket-booking-moula-ali" class="service-btn blink">TTD Ticket Booking</a>
+  
 
 
 </div>
