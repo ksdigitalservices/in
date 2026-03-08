@@ -6,56 +6,39 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>Internet Center in Moula Ali | TTD Booking & PF Services Near ECIL</title>
+<title>Internet Center in Moula Ali | TTD Booking, PF Services Near ECIL</title>
 
-<meta name="description" content="Best internet center in Moula Ali Hyderabad near ECIL providing TTD ticket booking, PF withdrawal services, passport applications, PAN card services, Aadhaar update, xerox and online services.">
+<meta name="description" content="KS Digital Services internet center in Moula Ali Hyderabad near ECIL providing TTD ticket booking, PF withdrawal services, passport applications, PAN card services, Aadhaar update, xerox, printout and online government services.">
 
-<meta name="keywords" content="
-internet center moula ali,
-internet cafe moula ali,
-online services moula ali,
-xerox shop moula ali,
-printout shop moula ali,
-internet center ecil,
-online services ecil,
-ttd ticket booking moula ali,
-ttd darshan booking ecil,
-pf withdrawal services moula ali,
-pf claim services ecil,
-pan card services moula ali,
-passport services moula ali,
-aadhaar update moula ali,
-internet center nfc hyderabad,
-internet services tirumala nagar,
-government online services moula ali,
-xerox and printout ecil,
-passport application assistance ecil,
-birth certificate moula ali,
-income certificate moula ali,
-scholarship applications ecil,
-online application center moula ali,
-document scanning moula ali,
-internet cafe near ecil hyderabad
-">
+<link rel="canonical" href="https://ksdigitalservices.in/">
 
 <style>
 
 body{
 margin:0;
 font-family:Arial;
-background:#f4f6fb;
+background:#f3f6fb;
 color:#1f2937;
-line-height:1.7;
+}
+
+/* TOP BAR */
+
+.topbar{
+background:#0f172a;
+color:white;
+font-size:14px;
+padding:6px 20px;
+text-align:center;
 }
 
 /* HEADER */
 
 header{
-background:#0f172a;
-color:white;
-text-align:center;
+background:white;
+border-bottom:1px solid #e5e7eb;
 padding:18px;
-font-size:24px;
+text-align:center;
+font-size:26px;
 font-weight:bold;
 }
 
@@ -70,7 +53,6 @@ margin:0;
 padding:0;
 list-style:none;
 display:flex;
-flex-wrap:wrap;
 justify-content:center;
 }
 
@@ -80,7 +62,7 @@ position:relative;
 
 nav a{
 color:white;
-padding:12px 16px;
+padding:14px 18px;
 display:block;
 text-decoration:none;
 font-size:15px;
@@ -90,45 +72,79 @@ nav li:hover{
 background:#334155;
 }
 
-/* DROPDOWN */
+/* MEGA MENU */
 
-.dropdown{
+.mega{
 display:none;
 position:absolute;
+left:0;
+width:900px;
 background:white;
-min-width:220px;
-box-shadow:0 3px 10px rgba(0,0,0,0.1);
+padding:25px;
+box-shadow:0 5px 15px rgba(0,0,0,0.15);
 }
 
-.dropdown a{
-color:#1f2937;
+nav li:hover .mega{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:20px;
 }
 
-nav li:hover .dropdown{
+.mega a{
 display:block;
+padding:6px 0;
+color:#1f2937;
 }
 
 /* HERO */
 
 .hero{
-background:linear-gradient(to right,#f1f5f9,#e2e8f0);
+background:#e2e8f0;
+padding:25px;
 text-align:center;
-padding:25px 15px;
-border-bottom:1px solid #e5e7eb;
 }
 
 .hero h1{
 margin:0;
-font-size:32px;
+font-size:30px;
 }
 
-.hero p{
-max-width:750px;
-margin:10px auto 0;
-font-size:16px;
+/* SCROLL SERVICES */
+
+.scroll{
+background:#fff;
+padding:12px;
+overflow:hidden;
+border-top:1px solid #e5e7eb;
+border-bottom:1px solid #e5e7eb;
 }
 
-/* SECTION */
+.track{
+display:flex;
+gap:12px;
+animation:scroll 22s linear infinite;
+}
+
+.scroll:hover .track{
+animation-play-state:paused;
+}
+
+.service{
+padding:10px 18px;
+border-radius:30px;
+background:#1e40af;
+color:white;
+text-decoration:none;
+font-size:14px;
+white-space:nowrap;
+}
+
+.blink{
+background:#dc2626;
+animation:blink 1s infinite;
+}
+
+/* GRID */
 
 .section{
 max-width:1100px;
@@ -136,51 +152,29 @@ margin:auto;
 padding:40px 20px;
 }
 
-.section h2{
-text-align:center;
-font-size:26px;
-margin-bottom:25px;
-}
-
-/* SERVICES */
-
-.services{
+.grid{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-gap:14px;
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+gap:15px;
 }
 
-.services a{
+.grid a{
 background:white;
 border:1px solid #e5e7eb;
-padding:14px;
-border-radius:6px;
-text-decoration:none;
-color:#1e40af;
-font-weight:600;
+padding:15px;
 text-align:center;
-transition:0.25s;
-}
-
-.services a:hover{
-background:#2563eb;
-color:white;
-}
-
-/* CONTENT */
-
-.content{
-max-width:900px;
-margin:auto;
+text-decoration:none;
+border-radius:6px;
+color:#1e293b;
+font-weight:600;
 }
 
 /* FAQ */
 
-.faq-item{
+.faq{
 background:white;
-padding:16px;
-border-radius:6px;
-margin-bottom:12px;
+padding:15px;
+margin-bottom:10px;
 border-left:4px solid #2563eb;
 }
 
@@ -189,93 +183,26 @@ border-left:4px solid #2563eb;
 .footer{
 background:#0f172a;
 color:white;
-padding:40px 20px;
 text-align:center;
+padding:40px 20px;
 }
 
 .footer a{
 color:#93c5fd;
-text-decoration:none;
 margin:0 8px;
-}
-
-/* STICKY BAR */
-
-.sticky-bar{
-position:fixed;
-bottom:0;
-left:0;
-width:100%;
-background:#0f172a;
-padding:10px;
-display:flex;
-justify-content:center;
-gap:10px;
-}
-
-.sticky-btn{
-padding:10px 18px;
-border-radius:25px;
-font-size:14px;
-font-weight:600;
-color:white;
 text-decoration:none;
-}
-
-.call{background:#f97316;}
-.wa{background:#22c55e;}
-.mapbtn{background:#2563eb;}
-
-/* SCROLL SERVICES */
-
-.scroll-services{
-overflow:hidden;
-position:relative;
-}
-
-.scroll-track{
-display:flex;
-gap:14px;
-animation:scrollServices 20s linear infinite;
-}
-
-.scroll-services:hover .scroll-track{
-animation-play-state:paused;
-}
-
-.service-btn{
-background:#1e40af;
-color:white;
-padding:12px 20px;
-border-radius:40px;
-white-space:nowrap;
-text-decoration:none;
-font-weight:600;
-font-size:14px;
-transition:0.25s;
-}
-
-.service-btn:hover{
-background:#2563eb;
-}
-
-/* BLINK BUTTON */
-
-.blink{
-background:#dc2626;
-animation:blink 1.2s infinite;
 }
 
 /* ANIMATIONS */
 
-@keyframes scrollServices{
+@keyframes scroll{
 0%{transform:translateX(0)}
 100%{transform:translateX(-50%)}
 }
 
 @keyframes blink{
 0%{opacity:1}
-50%{opacity:0.4}
+50%{opacity:0.3}
 100%{opacity:1}
 }
 
@@ -285,50 +212,47 @@ animation:blink 1.2s infinite;
 
 <body>
 
-<header>KS DIGITAL SERVICES</header>
+<div class="topbar">
+Internet Center Services | Moula Ali – ECIL – NFC – Kapra
+</div>
+
+<header>
+KS DIGITAL SERVICES
+</header>
 
 <nav>
 
 <ul>
 
 <li>
-<a href="#">Services ▾</a>
-<div class="dropdown">
-<a href="/passport-moula-ali">Passport Services</a>
-<a href="/pan-card-moula-ali">PAN Card</a>
-<a href="/aadhaar-address-update">Aadhaar Update</a>
-<a href="/voter-id-moula-ali">Voter ID</a>
-<a href="/pf-moula-ali">PF Service</a>
-</div>
-</li>
 
-<li>
-<a href="#">Certificate ▾</a>
-<div class="dropdown">
-<a href="/income-certificate-moula-ali">Income Certificate</a>
-<a href="/birth-certificate-moula-ali">Birth Certificate</a>
-<a href="/msme-registration-moula-ali">Udyam Certificate</a>
-</div>
-</li>
+<a href="#">Online Services ▾</a>
 
-<li>
-<a href="#">License ▾</a>
-<div class="dropdown">
-<a href="/fssai-license-moula-ali.html">FSSAI License</a>
-<a href="/trade-license-moula-ali.html">Trade License</a>
-<a href="/labour-license-moula-ali.html">Labour License</a>
-<a href="/gst-registration-moula-ali.html">GST Registration</a>
-</div>
-</li>
+<div class="mega">
 
-
-<li>
-<a href="#">Ticket ▾</a>
-<div class="dropdown">
-<a href="/ttd-ticket-booking-moula-ali">TTD Tickets</a>
-<a href="/irctc-train-ticket-booking-moula-ali">Train Tickets</a>
-<a href="/bus-ticket-booking-moula-ali">Bus Tickets</a>
+<div>
+<b>ID Services</b>
+<a href="/aadhaar-address-update.html">Aadhaar Update</a>
+<a href="/pan-card-moula-ali.html">PAN Card</a>
+<a href="/voter-id-moula-ali.html">Voter ID</a>
 </div>
+
+<div>
+<b>Certificates</b>
+<a href="/birth-certificate-moula-ali.html">Birth Certificate</a>
+<a href="/income-certificate-moula-ali.html">Income Certificate</a>
+<a href="/caste-certificate-moula-ali.html">Caste Certificate</a>
+</div>
+
+<div>
+<b>Applications</b>
+<a href="/passport-moula-ali.html">Passport</a>
+<a href="#">TTD Ticket Booking</a>
+<a href="#">PF Withdrawal</a>
+</div>
+
+</div>
+
 </li>
 
 </ul>
@@ -340,61 +264,57 @@ animation:blink 1.2s infinite;
 <h1>Internet Center in Moula Ali Hyderabad</h1>
 
 <p>
-KS Digital Services provides TTD ticket booking, PF withdrawal services, passport applications, PAN card services, Aadhaar updates and document services for customers from Moula Ali, ECIL, NFC and nearby areas.
+TTD Ticket Booking, PF Withdrawal Services, Passport Applications, PAN Card Services and Government Online Services near ECIL and NFC.
 </p>
 
 </section>
+
+<div class="scroll">
+
+<div class="track">
+
+<a class="service" href="/passport-moula-ali.html">Passport Application</a>
+<a class="service" href="/pan-card-moula-ali.html">PAN Card Apply</a>
+<a class="service" href="/aadhaar-address-update.html">Aadhaar Update</a>
+<a class="service" href="/voter-id-moula-ali.html">Voter ID</a>
+<a class="service" href="/birth-certificate-moula-ali.html">Birth Certificate</a>
+<a class="service" href="/income-certificate-moula-ali.html">Income Certificate</a>
+<a class="service blink" href="#">TTD Ticket Booking</a>
+<a class="service" href="#">PF Withdrawal</a>
+
+</div>
+
+</div>
+
 <section class="section">
 
-<h2>Popular Services</h2>
+<h2>Government Online Services</h2>
 
-<div class="scroll-services">
+<div class="grid">
 
-<div class="scroll-track">
-
-<a href="/passport-moula-ali.html" class="service-btn">Passport Application</a>
-
-<a href="/pan-card-moula-ali.html" class="service-btn">PAN Card Apply</a>
-
-<a href="/aadhaar-address-update.html" class="service-btn">Aadhaar Update</a>
-  
-<a href="/passport-moula-ali.html" class="service-btn">Passport Application</a>
-
-<a href="/pan-card-moula-ali.html" class="service-btn">PAN Card Apply</a>
-
-<a href="/aadhaar-address-update.html" class="service-btn">Aadhaar Update</a>
-
-  </div>
-  <br>
-<div class="scroll-track">
-<a href="/birth-certificate-moula-ali.html" class="service-btn">Birth Certificate</a>
-
-<a href="/ttd-ticket-booking-moula-ali" class="service-btn blink">TTD Ticket Booking</a>
-
-<a href="/pf-moula-ali" class="service-btn">PF Withdrawal Services</a>
-  
-<a href="/birth-certificate-moula-ali.html" class="service-btn">Birth Certificate</a>
-
-<a href="/ttd-ticket-booking-moula-ali" class="service-btn blink">TTD Ticket Booking</a>
-
-<a href="/pf-moula-ali" class="service-btn">PF Withdrawal Services</a>
-
-</div>
+<a href="/passport-moula-ali.html">Passport Services</a>
+<a href="/pan-card-moula-ali.html">PAN Card Services</a>
+<a href="/aadhaar-address-update.html">Aadhaar Update</a>
+<a href="/voter-id-moula-ali.html">Voter ID</a>
+<a href="/income-certificate-moula-ali.html">Income Certificate</a>
+<a href="/birth-certificate-moula-ali.html">Birth Certificate</a>
+<a href="#">TTD Ticket Booking</a>
+<a href="#">PF Withdrawal Services</a>
 
 </div>
 
 </section>
 
-<section class="section content">
+<section class="section">
 
-<h2>Internet Center Near ECIL</h2>
+<h2>Internet Center Near ECIL Hyderabad</h2>
 
 <p>
-Our internet center in Moula Ali helps customers complete government online applications and document services. Many customers from ECIL, NFC, Kapra and AS Rao Nagar visit our center for passport services, PAN card applications, Aadhaar updates and certificate registrations.
+KS Digital Services is a trusted internet center located in Tirumala Nagar Moula Ali Hyderabad providing passport applications, PAN card services, Aadhaar updates, TTD ticket booking, PF withdrawal assistance, xerox printing, document scanning and online government services.
 </p>
 
 <p>
-Government websites can be confusing for many people. Our service center helps customers correctly submit applications and avoid errors that may cause rejection or delays.
+Customers from ECIL, NFC, Kapra and AS Rao Nagar visit our center for reliable online service assistance and document services.
 </p>
 
 </section>
@@ -403,52 +323,46 @@ Government websites can be confusing for many people. Our service center helps c
 
 <h2>Frequently Asked Questions</h2>
 
-<div class="faq-item">
-<h3>What services are available at your internet center?</h3>
-<p>We provide passport applications, PAN card services, Aadhaar updates, online government applications, xerox, printout, scanning and document services.</p>
+<div class="faq">
+<b>Where is your internet center located?</b>
+<p>Tirumala Nagar Moula Ali Hyderabad near ECIL.</p>
 </div>
 
-<div class="faq-item">
-<h3>Can I print documents from mobile?</h3>
-<p>Yes. Customers can send documents through WhatsApp and we print them instantly.</p>
+<div class="faq">
+<b>Do you provide TTD ticket booking?</b>
+<p>Yes we assist customers with Tirumala darshan ticket booking.</p>
 </div>
 
-<div class="faq-item">
-<h3>Where is your internet center located?</h3>
-<p>Our center is located in Tirumala Nagar Moula Ali Hyderabad near ECIL.</p>
+<div class="faq">
+<b>Can I print documents from mobile?</b>
+<p>Yes you can send documents via WhatsApp for instant printing.</p>
 </div>
 
 </section>
 
 <div class="footer">
 
-
-<p>📍 Tirumala Nagar, Moula Ali, Hyderabad</p>
-
-<p>📞 Phone: 7893845696</p>
+<p><b>KS Digital Services</b></p>
 
 <p>
-Service Areas: Moula Ali, ECIL, NFC,
-Kapra, AS Rao Nagar, Cherlapally
+Internet Center Services: Printing, Xerox, Colour Printouts, Document Scanning, Lamination, Online Application Services, Passport Applications, PAN Card Services, Aadhaar Updates, Certificate Applications and Government Online Services.
 </p>
 
 <p>
-<a href="#">Facebook</a> |
-<a href="#">Instagram</a> |
-<a href="https://maps.app.goo.gl/HUPqMaPK21vYHSEc8">Google Maps</a>
+📍 Tirumala Nagar, Moula Ali, Hyderabad
+</p>
+
+<p>
+📞 7893845696
+</p>
+
+<p>
+<a href="#">Facebook</a>
+<a href="#">Instagram</a>
+<a href="#">Google Maps</a>
 </p>
 
 <p>© 2026 KS Digital Services</p>
-
-</div>
-
-<br><br>
-
-<div class="sticky-bar">
-
-<a class="sticky-btn call" href="tel:7893845696">Call</a>
-<a class="sticky-btn wa" href="https://wa.me/917893845696">WhatsApp</a>
-<a class="sticky-btn mapbtn" href="https://maps.app.goo.gl/HUPqMaPK21vYHSEc8">Map</a>
 
 </div>
 
