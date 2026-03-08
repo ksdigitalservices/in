@@ -226,6 +226,59 @@ text-decoration:none;
 .wa{background:#22c55e;}
 .mapbtn{background:#2563eb;}
 
+/* SCROLL SERVICES */
+
+.scroll-services{
+overflow:hidden;
+position:relative;
+}
+
+.scroll-track{
+display:flex;
+gap:14px;
+animation:scrollServices 20s linear infinite;
+}
+
+.scroll-services:hover .scroll-track{
+animation-play-state:paused;
+}
+
+.service-btn{
+background:#1e40af;
+color:white;
+padding:12px 20px;
+border-radius:40px;
+white-space:nowrap;
+text-decoration:none;
+font-weight:600;
+font-size:14px;
+transition:0.25s;
+}
+
+.service-btn:hover{
+background:#2563eb;
+}
+
+/* BLINK BUTTON */
+
+.blink{
+background:#dc2626;
+animation:blink 1.2s infinite;
+}
+
+/* ANIMATIONS */
+
+@keyframes scrollServices{
+0%{transform:translateX(0)}
+100%{transform:translateX(-50%)}
+}
+
+@keyframes blink{
+0%{opacity:1}
+50%{opacity:0.4}
+100%{opacity:1}
+}
+
 </style>
 
 </head>
@@ -291,21 +344,31 @@ KS Digital Services provides TTD ticket booking, PF withdrawal services, passpor
 </p>
 
 </section>
-
 <section class="section">
 
-<h2>Popular Online Services</h2>
+<h2>Popular Services</h2>
 
-<div class="services">
+<div class="scroll-services">
 
-<a href="/passport-moula-ali.html">Passport Application</a>
-<a href="/pan-card-moula-ali.html">PAN Card Apply</a>
-<a href="/aadhaar-address-update.html">Aadhaar Update</a>
-<a href="/voter-id-moula-ali.html">Voter ID</a>
-<a href="/birth-certificate-moula-ali.html">Birth Certificate</a>
-<a href="/income-certificate-moula-ali.html">Income Certificate</a>
-<a href="#">TTD Ticket Booking</a>
-<a href="#">PF Withdrawal Services</a>
+<div class="scroll-track">
+
+<a href="/passport-moula-ali.html" class="service-btn">Passport Application</a>
+
+<a href="/pan-card-moula-ali.html" class="service-btn">PAN Card Apply</a>
+
+<a href="/aadhaar-address-update.html" class="service-btn">Aadhaar Update</a>
+
+<a href="/voter-id-moula-ali.html" class="service-btn">Voter ID</a>
+
+<a href="/birth-certificate-moula-ali.html" class="service-btn">Birth Certificate</a>
+
+<a href="/income-certificate-moula-ali.html" class="service-btn">Income Certificate</a>
+
+<a href="#" class="service-btn blink">TTD Ticket Booking</a>
+
+<a href="#" class="service-btn">PF Withdrawal Services</a>
+
+</div>
 
 </div>
 
