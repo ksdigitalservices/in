@@ -32,9 +32,20 @@ height:56px;
 display:flex;
 align-items:center;
 justify-content:center;
+position:relative;
 font-size:20px;
 font-weight:800;
-letter-spacing:0.5px;
+}
+
+.nav-call{
+position:absolute;
+right:12px;
+background:#f97316;
+padding:6px 14px;
+border-radius:20px;
+font-size:14px;
+color:white;
+text-decoration:none;
 }
 
 /* HERO */
@@ -186,7 +197,10 @@ margin-bottom:15px;
 
 <body>
 
-<div class="nav">KS DIGITAL SERVICES</div>
+<div class="nav">
+<span>KS DIGITAL SERVICES</span>
+<a href="tel:7893845696" class="nav-call">📞 Call</a>
+</div>
 
 <section class="hero">
 
