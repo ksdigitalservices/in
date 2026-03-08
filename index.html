@@ -199,6 +199,59 @@ text-decoration:none;
 .wa{background:#22c55e;}
 .mapbtn{background:#2563eb;}
 
+/* SCROLL SERVICES */
+
+.scroll-services{
+overflow:hidden;
+position:relative;
+}
+
+.scroll-track{
+display:flex;
+gap:14px;
+animation:scrollServices 20s linear infinite;
+}
+
+.scroll-services:hover .scroll-track{
+animation-play-state:paused;
+}
+
+.service-btn{
+background:#1e40af;
+color:white;
+padding:12px 20px;
+border-radius:40px;
+white-space:nowrap;
+text-decoration:none;
+font-weight:600;
+font-size:14px;
+transition:0.25s;
+}
+
+.service-btn:hover{
+background:#2563eb;
+}
+
+/* BLINK BUTTON */
+
+.blink{
+background:#dc2626;
+animation:blink 1.2s infinite;
+}
+
+/* ANIMATIONS */
+
+@keyframes scrollServices{
+0%{transform:translateX(0)}
+100%{transform:translateX(-50%)}
+}
+
+@keyframes blink{
+0%{opacity:1}
+50%{opacity:0.4}
+100%{opacity:1}
+}
+
 </style>
 
 </head>
@@ -268,12 +321,17 @@ KS Digital Services provides TTD ticket booking, PF withdrawal services, passpor
 
 <div class="scroll-services">
 
+<div class="scroll-track">
 
 <a href="/passport-moula-ali.html" class="service-btn">Passport Application</a>
-<a href="/ttd-ticket-booking-moula-ali" class="service-btn blink">TTD Ticket Booking</a>
+
 <a href="/pan-card-moula-ali.html" class="service-btn">PAN Card Apply</a>
+
 <a href="/aadhaar-address-update.html" class="service-btn">Aadhaar Update</a>
+  
 <a href="/ttd-ticket-booking-moula-ali" class="service-btn blink">TTD Ticket Booking</a>
+
+</div>
 
 </div>
 
@@ -318,17 +376,7 @@ The center benefits the local community by saving time and travel expenses. Peop
 Our Internet Center is equipped with modern computers, high-speed internet connectivity, printers, scanners and biometric devices. This infrastructure ensures secure and fast processing of online applications.
 </p>
 
-<h2>Customer Support</h2>
 
-<p>
-Trained staff assist customers in filling online forms, uploading documents and completing digital transactions while maintaining confidentiality and accuracy.
-</p>
-
-<h2>Vision and Mission</h2>
-
-<p>
-Our mission is to provide reliable, affordable and accessible digital services to every citizen while promoting digital awareness and helping people access government and private online services.
-</p>
 
 </section>
 
