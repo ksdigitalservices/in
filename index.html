@@ -90,8 +90,6 @@ nav li:hover{
 background:#334155;
 }
 
-/* DROPDOWN */
-
 .dropdown{
 display:none;
 position:absolute;
@@ -128,7 +126,7 @@ margin:10px auto 0;
 font-size:16px;
 }
 
-/* SECTION */
+/* SECTIONS */
 
 .section{
 max-width:1100px;
@@ -140,31 +138,6 @@ padding:40px 20px;
 text-align:center;
 font-size:26px;
 margin-bottom:25px;
-}
-
-/* SERVICES */
-
-.services{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-gap:14px;
-}
-
-.services a{
-background:white;
-border:1px solid #e5e7eb;
-padding:14px;
-border-radius:6px;
-text-decoration:none;
-color:#1e40af;
-font-weight:600;
-text-align:center;
-transition:0.25s;
-}
-
-.services a:hover{
-background:#2563eb;
-color:white;
 }
 
 /* CONTENT */
@@ -226,59 +199,6 @@ text-decoration:none;
 .wa{background:#22c55e;}
 .mapbtn{background:#2563eb;}
 
-/* SCROLL SERVICES */
-
-.scroll-services{
-overflow:hidden;
-position:relative;
-}
-
-.scroll-track{
-display:flex;
-gap:14px;
-animation:scrollServices 20s linear infinite;
-}
-
-.scroll-services:hover .scroll-track{
-animation-play-state:paused;
-}
-
-.service-btn{
-background:#1e40af;
-color:white;
-padding:12px 20px;
-border-radius:40px;
-white-space:nowrap;
-text-decoration:none;
-font-weight:600;
-font-size:14px;
-transition:0.25s;
-}
-
-.service-btn:hover{
-background:#2563eb;
-}
-
-/* BLINK BUTTON */
-
-.blink{
-background:#dc2626;
-animation:blink 1.2s infinite;
-}
-
-/* ANIMATIONS */
-
-@keyframes scrollServices{
-0%{transform:translateX(0)}
-100%{transform:translateX(-50%)}
-}
-
-@keyframes blink{
-0%{opacity:1}
-50%{opacity:0.4}
-100%{opacity:1}
-}
-
 </style>
 
 </head>
@@ -321,16 +241,6 @@ animation:blink 1.2s infinite;
 </div>
 </li>
 
-
-<li>
-<a href="#">Ticket ▾</a>
-<div class="dropdown">
-<a href="/ttd-ticket-booking-moula-ali">TTD Tickets</a>
-<a href="/irctc-train-ticket-booking-moula-ali">Train Tickets</a>
-<a href="/bus-ticket-booking-moula-ali">Bus Tickets</a>
-</div>
-</li>
-
 </ul>
 
 </nav>
@@ -342,46 +252,6 @@ animation:blink 1.2s infinite;
 <p>
 KS Digital Services provides TTD ticket booking, PF withdrawal services, passport applications, PAN card services, Aadhaar updates and document services for customers from Moula Ali, ECIL, NFC and nearby areas.
 </p>
-
-</section>
-<section class="section">
-
-<h2>Popular Services</h2>
-
-<div class="scroll-services">
-
-<div class="scroll-track">
-
-<a href="/passport-moula-ali.html" class="service-btn">Passport Application</a>
-
-<a href="/pan-card-moula-ali.html" class="service-btn">PAN Card Apply</a>
-
-<a href="/aadhaar-address-update.html" class="service-btn">Aadhaar Update</a>
-  
-<a href="/passport-moula-ali.html" class="service-btn">Passport Application</a>
-
-<a href="/pan-card-moula-ali.html" class="service-btn">PAN Card Apply</a>
-
-<a href="/aadhaar-address-update.html" class="service-btn">Aadhaar Update</a>
-
-  </div>
-  <br>
-<div class="scroll-track">
-<a href="/birth-certificate-moula-ali.html" class="service-btn">Birth Certificate</a>
-
-<a href="/ttd-ticket-booking-moula-ali" class="service-btn blink">TTD Ticket Booking</a>
-
-<a href="/pf-moula-ali" class="service-btn">PF Withdrawal Services</a>
-  
-<a href="/birth-certificate-moula-ali.html" class="service-btn">Birth Certificate</a>
-
-<a href="/ttd-ticket-booking-moula-ali" class="service-btn blink">TTD Ticket Booking</a>
-
-<a href="/pf-moula-ali" class="service-btn">PF Withdrawal Services</a>
-
-</div>
-
-</div>
 
 </section>
 
@@ -399,37 +269,76 @@ Government websites can be confusing for many people. Our service center helps c
 
 </section>
 
+<section class="section content">
+
+<h2>Introduction</h2>
+
+<p>
+An Internet Center is an essential digital service hub that provides access to online facilities for the public. In Telangana, Internet Centers help citizens access government services, online applications, printing, scanning and digital payments. These centers play a key role in supporting digital literacy and bridging the gap between technology and communities.
+</p>
+
+<h2>Services Offered</h2>
+
+<p>
+Our Internet Center provides a wide range of services including online government applications, Aadhaar services, PAN card applications, passport applications, exam registrations, online bill payments, printing, scanning, photocopying and document laminations. We also assist customers with job applications, railway ticket booking, bus ticket booking and other online services required by the public.
+</p>
+
+<h2>Role in Digital Governance</h2>
+
+<p>
+Internet Centers support digital governance by helping citizens access services from MeeSeva and Government of Telangana portals. Through these services, citizens can apply for certificates, licenses and welfare schemes without visiting multiple government offices.
+</p>
+
+<h2>Benefits to the Community</h2>
+
+<p>
+The center benefits the local community by saving time and travel expenses. People without computers or internet access can complete online tasks easily. Students can apply for scholarships, entrance exams and educational services online.
+</p>
+
+<h2>Technology and Infrastructure</h2>
+
+<p>
+Our Internet Center is equipped with modern computers, high-speed internet connectivity, printers, scanners and biometric devices. This infrastructure ensures secure and fast processing of online applications.
+</p>
+
+<h2>Customer Support</h2>
+
+<p>
+Trained staff assist customers in filling online forms, uploading documents and completing digital transactions while maintaining confidentiality and accuracy.
+</p>
+
+<h2>Vision and Mission</h2>
+
+<p>
+Our mission is to provide reliable, affordable and accessible digital services to every citizen while promoting digital awareness and helping people access government and private online services.
+</p>
+
+</section>
+
 <section class="section">
 
 <h2>Frequently Asked Questions</h2>
 
 <div class="faq-item">
 <h3>What services are available at your internet center?</h3>
-<p>We provide passport applications, PAN card services, Aadhaar updates, online government applications, xerox, printout, scanning and document services.</p>
-</div>
-
-<div class="faq-item">
-<h3>Can I print documents from mobile?</h3>
-<p>Yes. Customers can send documents through WhatsApp and we print them instantly.</p>
+<p>Passport applications, PAN card services, Aadhaar updates, online government services, xerox, printing and document scanning.</p>
 </div>
 
 <div class="faq-item">
 <h3>Where is your internet center located?</h3>
-<p>Our center is located in Tirumala Nagar Moula Ali Hyderabad near ECIL.</p>
+<p>Tirumala Nagar Moula Ali Hyderabad near ECIL.</p>
 </div>
 
 </section>
 
 <div class="footer">
 
-
 <p>📍 Tirumala Nagar, Moula Ali, Hyderabad</p>
 
 <p>📞 Phone: 7893845696</p>
 
 <p>
-Service Areas: Moula Ali, ECIL, NFC,
-Kapra, AS Rao Nagar, Cherlapally
+Service Areas: Moula Ali, ECIL, NFC, Kapra, AS Rao Nagar, Cherlapally
 </p>
 
 <p>
@@ -441,9 +350,7 @@ Kapra, AS Rao Nagar, Cherlapally
 <p>© 2026 KS Digital Services</p>
 
 </div>
-
 <br><br>
-
 <div class="sticky-bar">
 
 <a class="sticky-btn call" href="tel:7893845696">Call</a>
