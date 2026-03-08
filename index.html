@@ -188,30 +188,31 @@ text-decoration:none;
 
 /* STICKY BAR */
 
-.sticky{
+.sticky-bar{
 position:fixed;
 bottom:0;
+left:0;
 width:100%;
-background:#1e3a8a;
+background:#0f172a;
+padding:10px;
 display:flex;
 justify-content:center;
+gap:10px;
+z-index:999;
 }
 
-.sticky a{
-color:white;
-padding:12px 24px;
-text-decoration:none;
+.sticky-btn{
+padding:10px 18px;
+border-radius:25px;
+font-size:14px;
 font-weight:600;
-border-right:1px solid rgba(255,255,255,0.2);
+color:white;
+text-decoration:none;
 }
 
-.sticky a:last-child{
-border-right:none;
-}
-
-.sticky a:hover{
-background:#2563eb;
-}
+.sticky-call{background:#f97316;}
+.sticky-wa{background:#22c55e;}
+.sticky-map{background:#2563eb;}
 
 </style>
 
@@ -373,13 +374,13 @@ We assist with passport services, PAN card applications, Aadhaar updates, schola
 </div>
 
 
-<div class="sticky">
+<div class="sticky-bar">
 
-<a href="tel:7893845696">Call</a>
+<a class="sticky-btn sticky-call" href="tel:7893845696">Call</a>
 
-<a href="https://wa.me/917893845696">WhatsApp</a>
+<a class="sticky-btn sticky-wa" href="https://wa.me/917893845696">WhatsApp</a>
 
-<a href="https://maps.app.goo.gl/HUPqMaPK21vYHSEc8">Map</a>
+<a class="sticky-btn sticky-map" href="https://maps.app.goo.gl/HUPqMaPK21vYHSEc8">Map</a>
 
 </div>
 
