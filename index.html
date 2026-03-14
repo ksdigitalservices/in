@@ -195,11 +195,19 @@ text-decoration:none;
 
 /* CONTENT */
 
-.content{
-max-width:900px;
-margin:auto;
-padding:40px 20px;
-line-height:1.7;
+.content {
+  max-width: 100%;       /* Let it shrink to fit smaller screens */
+  width: 900px;          /* Ideal width on larger screens */
+  margin: auto;
+  padding: 40px 20px;
+  line-height: 1.7;
+  box-sizing: border-box; /* ensures padding doesn't exceed width */
+}
+/* Optional: tweak for very small screens */
+@media (max-width: 600px) {
+  .content {
+    padding: 20px 10px;  /* smaller padding for small screens */
+  }
 }
 
 /* FAQ */
@@ -268,7 +276,7 @@ font-weight:bold;
 
 <div class="header">
 <div class="logo">KS DIGITAL SERVICES</div>
-<div class="top-info"> Moula Ali | 📞 7893845696</div>
+<div class="top-info"> Moula Ali |  📞 7893845696</div>
 </div>
 
 
@@ -291,32 +299,17 @@ Serving Moula Ali, ECIL, NFC, Kapra, AS Rao Nagar & Nearby Areas
 
 </section>
 
-<!-- QUICK ACTION -->
 
-<section class="quick">
-<a href="/xerox-near-moula-ali">Xerox</a>
-<a href="/printout-near-moula-ali">Printout</a>
-<a href="/ttd-ticket-booking-moula-ali">TTD Ticket Booking</a>
-<a href="/passport-moula-ali">Passport Apply</a>
-<a href="/pan-card-moula-ali">PAN Card</a>
-<a href="/aadhaar-address-update">Aadhaar Update</a>
-<a href="/birth-certificate-moula-ali">Birth Certificate</a>
-<a href="/voter-id-moula-ali">Voter ID</a>
-<a href="/driving-license-apply-moula-ali">Driving Licence</a>
-<a href="/gst-registration-moula-ali">GST Registration</a>
-
-</section>
 <!-- POPULAR SERVICES -->
 <section class="grid">
-
+<h2>Services We Offer</h2>
 <div class="card"><a href="/ttd-ticket-booking-moula-ali">TTD Ticket Booking</a></div>
 <div class="card"><a href="/passport-moula-ali">Passport Application</a></div>
 <div class="card"><a href="/pan-card-moula-ali">PAN Card Services</a></div>
 <div class="card"><a href="/aadhaar-address-update">Aadhaar Update</a></div>
 <div class="card"><a href="/aadhaar-card-download-moula-ali">Aadhaar Download</a></div>
+<div class="card"><a href="/marriage-certificate-moula-ali">Maarriage Certificate</a></div>
 <div class="card"><a href="/birth-certificate-moula-ali">Birth Certificate</a></div>
-<div class="card"><a href="/income-certificate-moula-ali">Income Certificate</a></div>
-<div class="card"><a href="/caste-certificate-moula-ali">Caste Certificate</a></div>
 <div class="card"><a href="/scholarship-application-moula-ali">Scholarship Application</a></div>
 <div class="card"><a href="/hall-ticket-printout-moula-ali">Hall Ticket Printout</a></div>
 <div class="card"><a href="/card-printing-services-moula-ali">PVC Card Printing</a></div>
@@ -329,6 +322,11 @@ Serving Moula Ali, ECIL, NFC, Kapra, AS Rao Nagar & Nearby Areas
 <div class="card"><a href="/gst-registration-moula-ali">GST Registration</a></div>
 <div class="card"><a href="/msme-registration-moula-ali">MSME Registration</a></div>
 <div class="card"><a href="/fssai-license-moula-ali">FSSAI License</a></div>
+<div class="card"><a href="/trade-license-moula-ali">Trade License</a></div>
+<div class="card"><a href="/life-certificate-moula-ali"> Life Certificate</a></div>
+<div class="card"><a href="/pan-aadhaar-linking-moula-ali">Aadhar & Pan Linking</a></div>
+<div class="card"><a href="/card-printing-services-moula-ali">PVC Cards</a></div>
+
 
 </section>
 <!-- SERVICE CATEGORIES -->
@@ -357,12 +355,11 @@ Serving Moula Ali, ECIL, NFC, Kapra, AS Rao Nagar & Nearby Areas
 <div>
 <h3>Certificates</h3>
 <ul>
+<li>Marriage Certificate</li>
 <li>Birth Certificate</li>
 <li>Death Certificate</li>
-<li>Income Certificate</li>
-<li>Caste Certificate</li>
-<li>Study Certificate</li>
-<li>Marriage Certificate</li>
+<li>Income Certificate Download</li>
+<li>Caste Certificate Download</li>
 </ul>
 </div>
 
@@ -402,7 +399,6 @@ Serving Moula Ali, ECIL, NFC, Kapra, AS Rao Nagar & Nearby Areas
 <li>Company Registration</li>
 <li>Partnership Registration</li>
 <li>Trademark Registration</li>
-<li>Digital Signature Certificate</li>
 </ul>
 </div>
 
@@ -509,8 +505,6 @@ Our center is equipped with high speed internet, modern computers, printers and 
 
 <p>⭐ 4.9 Google Rating</p>
 <p>📑 5000+ Services Completed</p>
-<p>📍 Located in Moula Ali Hyderabad</p>
-
 </section>
 
 <!-- FOOTER -->
@@ -523,10 +517,6 @@ Our center is equipped with high speed internet, modern computers, printers and 
 
 <div>
 <h3>KS Digital Services</h3>
-<p>
-Internet Center in Moula Ali Hyderabad providing passport services, PAN card applications,
-Aadhaar updates, TTD ticket booking, xerox, printing and government online services.
-</p>
 
 <p>
 📍 Inside Pochamma Temple Khaman, Tirumala Nagar Moula Ali Hyderabad
