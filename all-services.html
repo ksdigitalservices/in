@@ -1,5 +1,5 @@
-<!DOCTYPE html>
 <html lang="en">
+
 <head>
 
 <meta charset="UTF-8">
@@ -7,36 +7,78 @@
 
 <title>All Services | KS Digital Services</title>
 
-<meta name="description" content="Complete list of services offered by KS Digital Services including Aadhaar, PAN, Tirupati Darshan booking, printouts, certificates, registrations, and online services.">
+<meta name="description" content="Explore all online services offered by KS Digital Services including Aadhaar updates, PAN card services, Tirupati darshan booking, certificates, printouts, tickets, and registrations in Moula Ali and ECIL.">
+
+<link rel="icon" href="favicon.ico">
 
 <style>
 
 body{
-font-family:Arial;
-background:#f4f6f9;
 margin:0;
+font-family:Arial, sans-serif;
+background:#f4f6f9;
+color:#333;
 }
+
+/* HEADER */
+
+header{
+background:#0a58ca;
+color:white;
+padding:15px 20px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+header h2{
+margin:0;
+font-size:20px;
+}
+
+nav a{
+color:white;
+margin-left:15px;
+text-decoration:none;
+font-size:14px;
+}
+
+/* HERO */
+
+.hero{
+background:linear-gradient(120deg,#0a58ca,#007bff);
+color:white;
+text-align:center;
+padding:60px 20px;
+}
+
+.hero h1{
+margin:0;
+font-size:36px;
+}
+
+.hero p{
+margin-top:10px;
+font-size:16px;
+}
+
+/* SERVICE LIST */
 
 .container{
-max-width:1100px;
+max-width:1200px;
 margin:auto;
-padding:30px;
+padding:40px 20px;
 }
 
-h1{
-text-align:center;
-margin-bottom:30px;
-}
-
-.service-list{
+.service-grid{
 display:grid;
 grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
-gap:10px;
+gap:12px;
 }
 
-.service-list a{
+.service-grid a{
 display:block;
-padding:10px;
+padding:12px;
 background:white;
 border-radius:6px;
 text-decoration:none;
@@ -45,22 +87,98 @@ font-size:14px;
 border:1px solid #ddd;
 }
 
-.service-list a:hover{
-background:#007BFF;
+.service-grid a:hover{
+background:#0a58ca;
 color:white;
+}
+
+/* CTA BUTTONS */
+
+.cta{
+text-align:center;
+margin-top:40px;
+}
+
+.cta a{
+display:inline-block;
+margin:10px;
+padding:14px 24px;
+border-radius:6px;
+text-decoration:none;
+font-weight:bold;
+}
+
+.call-btn{
+background:#28a745;
+color:white;
+}
+
+.map-btn{
+background:#ff5722;
+color:white;
+}
+
+/* FOOTER */
+
+footer{
+background:#111;
+color:#ccc;
+text-align:center;
+padding:25px 10px;
+margin-top:50px;
+font-size:14px;
+}
+
+footer a{
+color:#ccc;
+text-decoration:none;
+margin:0 8px;
 }
 
 </style>
 
 </head>
 
+
 <body>
 
-<div class="container">
+
+<!-- HEADER -->
+
+<header>
+
+<h2>KS Digital Services</h2>
+
+<nav>
+<a href="/">Home</a>
+<a href="/all-services">Services</a>
+<a href="/privacy">Privacy</a>
+<a href="/terms">Terms</a>
+</nav>
+
+</header>
+
+
+
+<!-- HERO -->
+
+<section class="hero">
 
 <h1>All Online Services</h1>
 
-<div class="service-list">
+<p>Complete list of digital services available at KS Digital Services – Moula Ali & ECIL</p>
+
+</section>
+
+
+
+<!-- SERVICES -->
+
+<div class="container">
+
+<h2 style="text-align:center;margin-bottom:30px;">Browse All Services</h2>
+
+<div class="service-grid">
 
 <a href="/300-darshan-booking-ecil">300 Darshan Booking ECIL</a>
 <a href="/300-darshan-booking-moula-ali">300 Darshan Booking Moula Ali</a>
@@ -196,7 +314,33 @@ color:white;
 
 </div>
 
+<!-- CTA -->
+
+<div class="cta">
+
+<a class="call-btn" href="tel:+917893845696">7893845696</a>
+
+<a class="map-btn" href="https://maps.app.goo.gl/fvFgaDsNPVWp3sr27" target="_blank">Open in Google Maps</a>
+
 </div>
+
+</div>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+<p>© 2026 KS Digital Services</p>
+
+<p>
+
+<a href="/privacy">Privacy Policy</a> |
+<a href="/terms">Terms</a>
+
+</p>
+
+</footer>
 
 </body>
 </html>
