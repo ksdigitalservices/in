@@ -83,51 +83,29 @@ nav a:hover {
   background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
   color: white;
   text-align: center;
-  padding: 30px 20px 32px; /* reduced top & bottom space */
+  padding: 20px 16px; /* tighter overall */
 }
-.hero h1 {
-   margin: 0 0 10px; 
-  font-size: 34px;
-  font-weight: 800;
-  letter-spacing: -0.5px;
-}
-.hero-subheading {
-  font-size: 1.2rem;
-  max-width: 750px;
-  margin: 0 auto 10px;
-  opacity: 0.95;
-  font-weight: 500;
-}
+
+/* Remove ALL default margins */
+.hero h1,
 .hero p {
-  max-width: 800px;
-  margin: 16px auto 0;
-  font-size: 1rem;
+  margin: 0;
+  padding: 0;
 }
-.hero-buttons {
-  margin-top: 28px;
-  display: flex;
-  gap: 16px;
-  justify-content: center;
-  flex-wrap: wrap;
+
+/* Control spacing manually */
+.hero h1 {
+  margin-bottom: 8px;
+  line-height: 1.2;
 }
-.hero-buttons .btn-primary {
-  background: white;
-  color: #1e40af;
-  padding: 12px 28px;
-  border-radius: 40px;
-  font-weight: 700;
-  text-decoration: none;
-  transition: all 0.2s ease;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 1rem;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+
+.hero-subheading {
+  margin: 0 auto;
 }
-.hero-buttons .btn-primary:hover {
-  transform: translateY(-3px);
-  background: #f8fafc;
-  box-shadow: 0 12px 20px rgba(0,0,0,0.15);
+
+/* Space between each line */
+.hero-subheading p + p {
+  margin-top: 6px;
 }
 .btn-outline-light {
   background: transparent;
