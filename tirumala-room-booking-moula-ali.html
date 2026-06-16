@@ -221,7 +221,7 @@ Experience a modern, efficient, and reliable way to plan your pilgrimage. With T
 
 </section>
 
-
+<div id="shared-updates"></div>
 <section class="section bg-light">
 
 <div class="container">
@@ -528,6 +528,13 @@ ECIL, AS Rao Nagar, NFC, Kapra, Kushaiguda and nearby Hyderabad areas.
 <a class="sticky-btn sticky-map" href="https://maps.app.goo.gl/HUPqMaPK21vYHSEc8">Map</a>
 
 </div>
-
+<script>
+fetch('shared-updates.html')
+    .then(response => response.text())
+    .then(data => {
+        document.getElementById('shared-updates').innerHTML = data;
+    })
+    .catch(error => console.error('Error loading updates:', error));
+</script>
 </body>
 </html>
