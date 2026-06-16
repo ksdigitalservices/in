@@ -80,7 +80,7 @@ If you are searching for TTD online booking near me in Hyderabad, especially in 
 
 </div>
 </section>
-
+<div id="shared-updates"></div>
 <section class="section bg-light">
 <div class="container">
 
@@ -248,6 +248,13 @@ TTD tickets are usually released monthly. High-demand days such as weekends and 
 <p>📍 Moula Ali, Hyderabad</p>
 <p>© KS Digital Services</p>
 </div>
-
+<script>
+fetch('shared-updates.html')
+    .then(response => response.text())
+    .then(data => {
+        document.getElementById('shared-updates').innerHTML = data;
+    })
+    .catch(error => console.error('Error loading updates:', error));
+</script>
 </body>
 </html>
