@@ -235,7 +235,7 @@ Many people face problems such as payment failure, session timeout, or incorrect
 </div>
 
 </section>
-
+<div id="shared-updates"></div>
 
 <section class="section bg-light">
 
@@ -673,6 +673,13 @@ ECIL, AS Rao Nagar, NFC, Kapra, Kushaiguda and nearby Hyderabad areas.
 <a class="sticky-btn sticky-map" href="https://maps.app.goo.gl/HUPqMaPK21vYHSEc8">Map</a>
 
 </div>
-
+<script>
+fetch('shared-updates.html')
+    .then(response => response.text())
+    .then(data => {
+        document.getElementById('shared-updates').innerHTML = data;
+    })
+    .catch(error => console.error('Error loading updates:', error));
+</script>
 </body>
 </html>
