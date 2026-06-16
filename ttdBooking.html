@@ -38,7 +38,7 @@ body{font-family:Inter,sans-serif;background:#f8fafc;color:#1e293b;line-height:1
 <h1>Book TTD Tickets Online – Tirupati Darshan Booking</h1>
 <p>Special Entry • Sarva Darshan • Seva Tickets • Tirumala Room Booking in Hyderabad</p>
 </section>
-
+<div id="shared-updates"></div>
 <section class="section">
 <div class="container">
 
@@ -150,6 +150,13 @@ body{font-family:Inter,sans-serif;background:#f8fafc;color:#1e293b;line-height:1
  "serviceOffered": "TTD Ticket Booking"
 }
 </script>
-
+<script>
+fetch('shared-updates.html')
+    .then(response => response.text())
+    .then(data => {
+        document.getElementById('shared-updates').innerHTML = data;
+    })
+    .catch(error => console.error('Error loading updates:', error));
+</script>
 </body>
 </html>
