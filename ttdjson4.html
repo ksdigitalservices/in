@@ -38,7 +38,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 20px;
+      margin-bottom: 15px;
       gap: 10px;
     }
 
@@ -63,6 +63,39 @@
     .download-btn {
       background: #059669;
       color: white;
+    }
+
+    /* ============================================================
+       FILE NAME
+       ============================================================ */
+
+    .filename-row {
+      display: grid;
+      grid-template-columns: 160px 1fr;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .filename-label {
+      font-size: 13px;
+      font-weight: bold;
+      color: #374151;
+    }
+
+    #fileName {
+      width: 100%;
+      padding: 8px 10px;
+      border: 1px solid #cbd5e1;
+      border-radius: 5px;
+      font-size: 13px;
+      background: white;
+    }
+
+    #fileName:focus {
+      outline: none;
+      border-color: #2563eb;
+      box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.1);
     }
 
     .people-container {
@@ -160,6 +193,7 @@
     }
 
     @media (max-width: 600px) {
+
       body {
         padding: 10px;
       }
@@ -174,6 +208,11 @@
 
       .top-bar button {
         width: 100%;
+      }
+
+      .filename-row {
+        grid-template-columns: 1fr;
+        gap: 5px;
       }
 
       .form-row {
@@ -195,23 +234,61 @@
 
     <h1>Dynamic JSON Form Generator</h1>
 
+    <!-- ============================================================
+         FILE NAME
+         ============================================================ -->
+
+    <div class="filename-row">
+
+      <div class="filename-label">
+        File Name
+      </div>
+
+      <input
+        type="text"
+        id="fileName"
+        placeholder="Enter file name"
+        autocomplete="off"
+      />
+
+    </div>
+
+
+    <!-- ============================================================
+         TOP BUTTONS
+         ============================================================ -->
+
     <div class="top-bar">
-      <button class="add-btn" onclick="addPerson()">
+
+      <button
+        class="add-btn"
+        onclick="addPerson()"
+      >
         Add Person
       </button>
 
-      <button class="download-btn" onclick="downloadJSON()">
+      <button
+        class="download-btn"
+        onclick="downloadJSON()"
+      >
         Download JSON
       </button>
+
     </div>
 
-    <div id="peopleContainer" class="people-container"></div>
+
+    <div
+      id="peopleContainer"
+      class="people-container"
+    ></div>
+
 
     <div class="note">
       Maximum allowed entries: 6 people.
     </div>
 
   </div>
+
 
   <script>
 
@@ -238,14 +315,18 @@
       }
     ];
 
+
     const MAX_PEOPLE = 6;
+
 
     // Remove unwanted keys
     const excludedKeys = ["undefined"];
 
-    const fields = Object.keys(sampleData[0]).filter(
-      key => !excludedKeys.includes(key)
-    );
+
+    const fields =
+      Object.keys(sampleData[0]).filter(
+        key => !excludedKeys.includes(key)
+      );
 
 
     // ============================================================
@@ -253,9 +334,57 @@
     // ============================================================
 
     function formatLabel(key) {
+
       return key
         .replace(/_/g, " ")
         .replace(/\b\w/g, char => char.toUpperCase());
+
+    }
+
+
+    // ============================================================
+    // UPDATE FILE NAME FROM PERSON 1
+    // ============================================================
+
+    function updateFileNameFromPerson1() {
+
+      const firstPerson =
+        document.querySelector(".person-card");
+
+      const fileNameInput =
+        document.getElementById("fileName");
+
+
+      if (!firstPerson || !fileNameInput) {
+        return;
+      }
+
+
+      const nameInput =
+        firstPerson.querySelector(
+          'input[data-field="name"]'
+        );
+
+
+      if (!nameInput) {
+        return;
+      }
+
+
+      /*
+       * Only automatically update the filename if the
+       * user has not manually edited it.
+       */
+
+      if (
+        !fileNameInput.dataset.manuallyEdited
+      ) {
+
+        fileNameInput.value =
+          nameInput.value.trim();
+
+      }
+
     }
 
 
@@ -267,10 +396,16 @@
 
       let element;
 
-      // Gender dropdown
+
+      // ==========================================================
+      // GENDER DROPDOWN
+      // ==========================================================
+
       if (field === "gender") {
 
-        element = document.createElement("select");
+        element =
+          document.createElement("select");
+
 
         const options = [
           "",
@@ -279,94 +414,221 @@
           "Other"
         ];
 
+
         options.forEach(optionValue => {
 
           const option =
             document.createElement("option");
 
-          option.value = optionValue;
+
+          option.value =
+            optionValue;
+
+
           option.textContent =
             optionValue || "Select";
 
+
           if (optionValue === value) {
+
             option.selected = true;
+
           }
+
 
           element.appendChild(option);
 
         });
 
+
       } else {
 
-        element = document.createElement("input");
+        element =
+          document.createElement("input");
+
 
         if (field === "email") {
 
           element.type = "email";
 
-        } else if (
-          ["age", "people", "pincode"].includes(field)
+        }
+
+        else if (
+          ["age", "people", "pincode"]
+            .includes(field)
         ) {
 
           element.type = "number";
 
-        } else {
+        }
+
+        else {
 
           element.type = "text";
 
         }
 
-        element.value = value || "";
+
+        element.value =
+          value || "";
+
       }
 
 
       // Store field name
-      element.dataset.field = field;
+      element.dataset.field =
+        field;
 
 
       // ==========================================================
-      // NAME VALIDATION
+      // NAME
       // ==========================================================
 
       if (field === "name") {
 
-        // Trim leading/trailing spaces when leaving the field
-        element.addEventListener("blur", () => {
-          element.value = element.value.trim();
-        });
+        /*
+         * Trim leading/trailing spaces when
+         * the user leaves the field.
+         */
+
+        element.addEventListener(
+          "blur",
+          () => {
+
+            element.value =
+              element.value.trim();
+
+
+            /*
+             * Person 1 name controls the default
+             * filename.
+             */
+
+            const firstCard =
+              document.querySelector(
+                ".person-card"
+              );
+
+
+            const currentCard =
+              element.closest(
+                ".person-card"
+              );
+
+
+            if (
+              firstCard &&
+              currentCard === firstCard
+            ) {
+
+              updateFileNameFromPerson1();
+
+            }
+
+          }
+        );
+
+
+        /*
+         * Update filename while typing Person 1's name.
+         */
+
+        element.addEventListener(
+          "input",
+          () => {
+
+            const firstCard =
+              document.querySelector(
+                ".person-card"
+              );
+
+
+            const currentCard =
+              element.closest(
+                ".person-card"
+              );
+
+
+            if (
+              firstCard &&
+              currentCard === firstCard
+            ) {
+
+              updateFileNameFromPerson1();
+
+            }
+
+          }
+        );
 
       }
 
 
       // ==========================================================
-      // AADHAAR VALIDATION
+      // AADHAAR
       // ==========================================================
 
       if (field === "aadhar") {
 
         element.maxLength = 12;
+
         element.inputMode = "numeric";
-        element.pattern = "\\d{12}";
 
-        // Do not allow spaces or non-digit characters
-        element.addEventListener("input", () => {
+        element.pattern =
+          "\\d{12}";
 
-          element.value =
-            element.value.replace(/\D/g, "");
 
-          // Limit to 12 digits
-          if (element.value.length > 12) {
+        /*
+         * IMPORTANT:
+         *
+         * If user pastes:
+         *
+         * 12341234 1234
+         *
+         * it becomes:
+         *
+         * 123412341234
+         *
+         * 
+         * We remove ALL non-digit characters.
+         * Then keep only the first 12 digits.
+         */
+
+        element.addEventListener(
+          "input",
+          () => {
+
+            let cleaned =
+              element.value.replace(
+                /\D/g,
+                ""
+              );
+
+
+            if (
+              cleaned.length > 12
+            ) {
+
+              cleaned =
+                cleaned.substring(
+                  0,
+                  12
+                );
+
+            }
+
+
             element.value =
-              element.value.slice(0, 12);
-          }
+              cleaned;
 
-        });
+          }
+        );
 
       }
 
 
       // ==========================================================
-      // PINCODE VALIDATION
+      // PINCODE
       // ==========================================================
 
       if (field === "pincode") {
@@ -377,6 +639,7 @@
 
 
       return element;
+
     }
 
 
@@ -387,17 +650,23 @@
     function addRow(data = {}) {
 
       const container =
-        document.getElementById("peopleContainer");
+        document.getElementById(
+          "peopleContainer"
+        );
 
 
       // Maximum limit
-      if (container.children.length >= MAX_PEOPLE) {
+      if (
+        container.children.length >=
+        MAX_PEOPLE
+      ) {
 
         alert(
           "Maximum limit reached. Only 6 people allowed."
         );
 
         return;
+
       }
 
 
@@ -405,39 +674,57 @@
         container.children.length + 1;
 
 
-      // Main card
+      // ==========================================================
+      // MAIN CARD
+      // ==========================================================
+
       const card =
         document.createElement("div");
 
-      card.className = "person-card";
+
+      card.className =
+        "person-card";
 
 
-      // ========================================================
+      // ==========================================================
       // HEADER
-      // ========================================================
+      // ==========================================================
 
       const header =
         document.createElement("div");
 
-      header.className = "person-header";
+
+      header.className =
+        "person-header";
 
 
       const title =
         document.createElement("div");
 
-      title.className = "person-title";
+
+      title.className =
+        "person-title";
+
 
       title.textContent =
-        "Person " + personNumber;
+        "Person " +
+        personNumber;
 
 
-      // Remove button
+      // ==========================================================
+      // REMOVE BUTTON
+      // ==========================================================
+
       const removeBtn =
         document.createElement("button");
 
-      removeBtn.textContent = "Remove";
 
-      removeBtn.className = "remove-btn";
+      removeBtn.textContent =
+        "Remove";
+
+
+      removeBtn.className =
+        "remove-btn";
 
 
       removeBtn.onclick = () => {
@@ -446,29 +733,71 @@
 
         updatePersonNumbers();
 
+        /*
+         * After removing Person 1, the new Person 1
+         * should become the filename source.
+         */
+
+        const fileNameInput =
+          document.getElementById(
+            "fileName"
+          );
+
+
+        /*
+         * Allow the filename to be regenerated
+         * from the new Person 1.
+         */
+
+        if (fileNameInput) {
+
+          delete fileNameInput.dataset
+            .manuallyEdited;
+
+          updateFileNameFromPerson1();
+
+        }
+
       };
 
 
       header.appendChild(title);
+
       header.appendChild(removeBtn);
 
 
-      // ========================================================
+      // ==========================================================
       // BODY
-      // ========================================================
+      // ==========================================================
 
       const body =
         document.createElement("div");
 
-      body.className = "person-body";
+
+      body.className =
+        "person-body";
 
 
-      // Person 1 shows all fields.
-      // Persons 2 to 6 show only Name, Age, Gender and Aadhaar.
+      /*
+       * Person 1 shows all fields.
+       *
+       * Persons 2 to 6 show only:
+       *
+       * Name
+       * Age
+       * Gender
+       * Aadhaar
+       */
+
       const personFields =
         personNumber === 1
           ? fields
-          : ["name", "age", "gender", "aadhar"];
+          : [
+              "name",
+              "age",
+              "gender",
+              "aadhar"
+            ];
 
 
       personFields.forEach(field => {
@@ -476,14 +805,19 @@
         const row =
           document.createElement("div");
 
-        row.className = "form-row";
+
+        row.className =
+          "form-row";
 
 
         // Label
         const label =
           document.createElement("div");
 
-        label.className = "form-label";
+
+        label.className =
+          "form-label";
+
 
         label.textContent =
           formatLabel(field);
@@ -491,10 +825,14 @@
 
         // Input
         const input =
-          createInput(field, data[field]);
+          createInput(
+            field,
+            data[field]
+          );
 
 
         row.appendChild(label);
+
         row.appendChild(input);
 
         body.appendChild(row);
@@ -503,9 +841,22 @@
 
 
       card.appendChild(header);
+
       card.appendChild(body);
 
       container.appendChild(card);
+
+
+      /*
+       * Set filename after Person 1 is created.
+       */
+
+      if (personNumber === 1) {
+
+        updateFileNameFromPerson1();
+
+      }
+
     }
 
 
@@ -527,18 +878,26 @@
     function updatePersonNumbers() {
 
       const cards =
-        document.querySelectorAll(".person-card");
+        document.querySelectorAll(
+          ".person-card"
+        );
 
 
-      cards.forEach((card, index) => {
+      cards.forEach(
+        (card, index) => {
 
-        const title =
-          card.querySelector(".person-title");
+          const title =
+            card.querySelector(
+              ".person-title"
+            );
 
-        title.textContent =
-          "Person " + (index + 1);
 
-      });
+          title.textContent =
+            "Person " +
+            (index + 1);
+
+        }
+      );
 
     }
 
@@ -553,13 +912,19 @@
 
 
       // ==========================================================
-      // NAME VALIDATION
+      // NAME
       // ==========================================================
 
-      // Trim first and last whitespace
-      if (typeof rowData.name === "string") {
-        rowData.name = rowData.name.trim();
+      if (
+        typeof rowData.name ===
+        "string"
+      ) {
+
+        rowData.name =
+          rowData.name.trim();
+
       }
+
 
       // Name required
       if (
@@ -573,12 +938,14 @@
 
 
       // ==========================================================
-      // EMAIL VALIDATION
+      // EMAIL
       // ==========================================================
 
       if (
         rowData.email &&
-        !/^\S+@\S+\.\S+$/.test(rowData.email)
+        !/^\S+@\S+\.\S+$/.test(
+          rowData.email
+        )
       ) {
 
         valid = false;
@@ -587,14 +954,18 @@
 
 
       // ==========================================================
-      // AADHAAR VALIDATION
+      // AADHAAR
       // ==========================================================
+
+      /*
+       * Aadhaar must contain exactly
+       * 12 numeric digits.
+       */
 
       if (
         rowData.aadhar &&
-        (
-          rowData.aadhar.length !== 12 ||
-          !/^\d{12}$/.test(rowData.aadhar)
+        !/^\d{12}$/.test(
+          rowData.aadhar
         )
       ) {
 
@@ -604,6 +975,7 @@
 
 
       return valid;
+
     }
 
 
@@ -614,7 +986,10 @@
     function collectData() {
 
       const cards =
-        document.querySelectorAll(".person-card");
+        document.querySelectorAll(
+          ".person-card"
+        );
+
 
       const result = [];
 
@@ -625,43 +1000,75 @@
 
 
         card
-          .querySelectorAll("input, select")
+          .querySelectorAll(
+            "input, select"
+          )
           .forEach(input => {
 
-            let value = input.value;
+            let value =
+              input.value;
 
 
             // ==================================================
-            // TRIM NAME
+            // NAME
             // ==================================================
 
-            if (input.dataset.field === "name") {
+            if (
+              input.dataset.field ===
+              "name"
+            ) {
 
-              value = value.trim();
+              value =
+                value.trim();
 
-              // Update visible input as well
-              input.value = value;
+
+              input.value =
+                value;
 
             }
 
 
             // ==================================================
-            // CLEAN AADHAAR
+            // AADHAAR
             // ==================================================
 
-            if (input.dataset.field === "aadhar") {
+            if (
+              input.dataset.field ===
+              "aadhar"
+            ) {
 
-              // Remove all whitespace
-              value = value.replace(/\s/g, "");
+              /*
+               * Remove spaces and all
+               * non-digit characters.
+               */
 
-              // Update visible input
-              input.value = value;
+              value =
+                value.replace(
+                  /\D/g,
+                  ""
+                );
+
+
+              /*
+               * Keep maximum 12 digits.
+               */
+
+              value =
+                value.substring(
+                  0,
+                  12
+                );
+
+
+              input.value =
+                value;
 
             }
 
 
-            obj[input.dataset.field] =
-              value;
+            obj[
+              input.dataset.field
+            ] = value;
 
           });
 
@@ -672,6 +1079,7 @@
 
 
       return result;
+
     }
 
 
@@ -685,8 +1093,13 @@
         collectData();
 
 
-      // No people
-      if (data.length === 0) {
+      // ==========================================================
+      // NO PEOPLE
+      // ==========================================================
+
+      if (
+        data.length === 0
+      ) {
 
         alert(
           "Please add at least one person."
@@ -707,10 +1120,13 @@
         i++
       ) {
 
-        const row = data[i];
+        const row =
+          data[i];
 
 
-        if (!validateRow(row)) {
+        if (
+          !validateRow(row)
+        ) {
 
           alert(
             `Validation failed for Person ${i + 1}. ` +
@@ -722,6 +1138,73 @@
         }
 
       }
+
+
+      // ==========================================================
+      // FILE NAME
+      // ==========================================================
+
+      const fileNameInput =
+        document.getElementById(
+          "fileName"
+        );
+
+
+      let fileName =
+        fileNameInput.value.trim();
+
+
+      /*
+       * If filename is empty, use Person 1 name.
+       */
+
+      if (!fileName) {
+
+        fileName =
+          data[0]?.name?.trim() ||
+          "people-data";
+
+      }
+
+
+      /*
+       * Remove characters that are
+       * invalid in filenames.
+       */
+
+      fileName =
+        fileName.replace(
+          /[<>:"/\\|?*\x00-\x1F]/g,
+          ""
+        );
+
+
+      fileName =
+        fileName.trim();
+
+
+      /*
+       * Prevent an empty filename after
+       * removing invalid characters.
+       */
+
+      if (!fileName) {
+
+        fileName =
+          "people-data";
+
+      }
+
+
+      /*
+       * Prevent duplicate .json extension.
+       */
+
+      fileName =
+        fileName.replace(
+          /\.json$/i,
+          ""
+        );
 
 
       // ==========================================================
@@ -744,59 +1227,94 @@
         new Blob(
           [jsonString],
           {
-            type: "application/json"
+            type:
+              "application/json"
           }
         );
 
 
       const url =
-        URL.createObjectURL(blob);
+        URL.createObjectURL(
+          blob
+        );
 
 
       const a =
-        document.createElement("a");
+        document.createElement(
+          "a"
+        );
 
 
-      a.href = url;
-
-
-      // File name from first person's name
-      const firstPersonName =
-        data[0]?.name?.trim() ||
-        "people-data";
-
-
-      const safeFileName =
-        firstPersonName
-          .replace(/[^a-zA-Z0-9 ]/g, "")
-          .replace(/\s+/g, " ")
-          .trim();
+      a.href =
+        url;
 
 
       a.download =
-        safeFileName + "_ttd.json";
+        fileName +
+        ".json";
 
 
-      document.body.appendChild(a);
+      document.body.appendChild(
+        a
+      );
+
 
       a.click();
 
-      document.body.removeChild(a);
 
-      URL.revokeObjectURL(url);
+      document.body.removeChild(
+        a
+      );
+
+
+      URL.revokeObjectURL(
+        url
+      );
 
     }
+
+
+    // ============================================================
+    // FILE NAME MANUAL EDIT DETECTION
+    // ============================================================
+
+    document
+      .getElementById("fileName")
+      .addEventListener(
+        "input",
+        function () {
+
+          /*
+           * Once the user edits the filename,
+           * stop automatically replacing it
+           * with Person 1's name.
+           */
+
+          this.dataset.manuallyEdited =
+            "true";
+
+        }
+      );
 
 
     // ============================================================
     // INITIALIZE
     // ============================================================
 
-    sampleData.forEach(person => {
+    sampleData.forEach(
+      person => {
 
-      addRow(person);
+        addRow(person);
 
-    });
+      }
+    );
+
+
+    // ============================================================
+    // INITIAL FILE NAME
+    // ============================================================
+
+    updateFileNameFromPerson1();
 
   </script>
 
