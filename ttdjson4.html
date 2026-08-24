@@ -467,7 +467,11 @@
 
           element.inputMode = "numeric";
 
-          element.maxLength = 10;
+          /*
+           * Do not use maxlength here either.
+           * The value is cleaned first and then
+           * limited to 10 digits.
+           */
 
         }
 
@@ -526,22 +530,15 @@
       if (field === "name") {
 
         /*
-         * Allow only:
+         * Only alphabets and spaces are allowed.
          *
-         * A-Z
-         * a-z
-         * spaces
+         * Examples:
          *
-         * Remove:
-         *
-         * numbers
-         * dots
-         * commas
-         * hyphens
-         * apostrophes
-         * slashes
-         * @
-         * and every other special character.
+         * "Ramesh Kumar"      -> Ramesh Kumar
+         * " Ramesh Kumar "    -> Ramesh Kumar
+         * "Ramesh.Kumar"      -> RameshKumar
+         * "Ramesh123 Kumar"   -> Ramesh Kumar
+         * "Ramesh@Kumar"      -> RameshKumar
          */
 
         element.addEventListener(
@@ -556,8 +553,8 @@
 
 
             /*
-             * Convert multiple consecutive
-             * spaces into one space.
+             * Convert multiple spaces
+             * into one space.
              */
 
             cleaned =
@@ -568,8 +565,7 @@
 
 
             /*
-             * Remove leading spaces
-             * while typing.
+             * Remove leading spaces.
              */
 
             cleaned =
@@ -658,7 +654,21 @@
 
       if (field === "aadhar") {
 
-        element.maxLength = 12;
+        /*
+         * IMPORTANT:
+         *
+         * Do NOT set maxLength = 12 here.
+         *
+         * Browser maxlength can truncate a pasted
+         * value such as:
+         *
+         * 1234 1234 1234
+         *
+         * before the input event has processed it.
+         *
+         * We therefore clean the complete value first
+         * and then limit it to 12 digits.
+         */
 
         element.inputMode = "numeric";
 
@@ -666,21 +676,17 @@
           "\\d{12}";
 
 
-        /*
-         * Handles both typing and pasting.
-         *
-         * Example:
-         *
-         * 12341234 1234
-         *
-         * becomes:
-         *
-         * 123412341234
-         */
-
         element.addEventListener(
           "input",
           () => {
+
+            /*
+             * Remove everything except digits.
+             *
+             * 1234 1234 1234
+             *        ↓
+             * 123412341234
+             */
 
             let cleaned =
               element.value.replace(
@@ -690,20 +696,15 @@
 
 
             /*
-             * Keep maximum 12 digits.
+             * After removing spaces/non-digits,
+             * keep exactly the first 12 digits.
              */
 
-            if (
-              cleaned.length > 12
-            ) {
-
-              cleaned =
-                cleaned.substring(
-                  0,
-                  12
-                );
-
-            }
+            cleaned =
+              cleaned.substring(
+                0,
+                12
+              );
 
 
             element.value =
@@ -740,17 +741,11 @@
              * Keep maximum 10 digits.
              */
 
-            if (
-              cleaned.length > 10
-            ) {
-
-              cleaned =
-                cleaned.substring(
-                  0,
-                  10
-                );
-
-            }
+            cleaned =
+              cleaned.substring(
+                0,
+                10
+              );
 
 
             element.value =
@@ -1058,11 +1053,6 @@
         "string"
       ) {
 
-        /*
-         * Trim leading and trailing
-         * whitespace.
-         */
-
         rowData.name =
           rowData.name.trim();
 
@@ -1072,16 +1062,10 @@
       /*
        * Name must contain:
        *
-       * - Alphabets only
+       * - Alphabets
        * - Single spaces between words
        *
-       * No:
-       * - numbers
-       * - dots
-       * - commas
-       * - hyphens
-       * - apostrophes
-       * - special characters
+       * No numbers or special characters.
        */
 
       if (
@@ -1134,7 +1118,7 @@
 
       /*
        * Aadhaar must contain exactly
-       * 12 numeric digits.
+       * 12 digits.
        */
 
       if (
@@ -1194,7 +1178,7 @@
             ) {
 
               /*
-               * Remove all invalid characters.
+               * Remove invalid characters.
                */
 
               value =
@@ -1206,7 +1190,7 @@
 
               /*
                * Convert multiple spaces
-               * into a single space.
+               * into one.
                */
 
               value =
@@ -1217,7 +1201,7 @@
 
 
               /*
-               * Trim first and last spaces.
+               * Trim leading/trailing spaces.
                */
 
               value =
