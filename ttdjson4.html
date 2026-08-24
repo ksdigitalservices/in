@@ -98,6 +98,10 @@
       box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.1);
     }
 
+    /* ============================================================
+       PEOPLE
+       ============================================================ */
+
     .people-container {
       display: flex;
       flex-direction: column;
@@ -277,6 +281,10 @@
     </div>
 
 
+    <!-- ============================================================
+         PEOPLE CONTAINER
+         ============================================================ -->
+
     <div
       id="peopleContainer"
       class="people-container"
@@ -298,6 +306,8 @@
 
     const sampleData = [
       {
+        "serialNumber": "",
+        "phone": "",
         "date": "",
         "people": "",
         "time": "1600",
@@ -372,8 +382,8 @@
 
 
       /*
-       * Only automatically update the filename if the
-       * user has not manually edited it.
+       * Automatically update the filename only
+       * until the user manually edits it.
        */
 
       if (
@@ -447,11 +457,34 @@
           document.createElement("input");
 
 
-        if (field === "email") {
+        // ========================================================
+        // PHONE NUMBER
+        // ========================================================
+
+        if (field === "phone") {
+
+          element.type = "tel";
+
+          element.inputMode = "numeric";
+
+          element.maxLength = 10;
+
+
+        }
+
+        // ========================================================
+        // EMAIL
+        // ========================================================
+
+        else if (field === "email") {
 
           element.type = "email";
 
         }
+
+        // ========================================================
+        // AGE / PEOPLE / PINCODE
+        // ========================================================
 
         else if (
           ["age", "people", "pincode"]
@@ -461,6 +494,10 @@
           element.type = "number";
 
         }
+
+        // ========================================================
+        // EVERYTHING ELSE
+        // ========================================================
 
         else {
 
@@ -481,14 +518,14 @@
 
 
       // ==========================================================
-      // NAME
+      // NAME VALIDATION
       // ==========================================================
 
       if (field === "name") {
 
         /*
-         * Trim leading/trailing spaces when
-         * the user leaves the field.
+         * Trim leading and trailing spaces
+         * when leaving the field.
          */
 
         element.addEventListener(
@@ -500,8 +537,8 @@
 
 
             /*
-             * Person 1 name controls the default
-             * filename.
+             * Person 1 name is used as the
+             * default filename.
              */
 
             const firstCard =
@@ -530,7 +567,8 @@
 
 
         /*
-         * Update filename while typing Person 1's name.
+         * Update filename while typing
+         * Person 1's name.
          */
 
         element.addEventListener(
@@ -565,7 +603,7 @@
 
 
       // ==========================================================
-      // AADHAAR
+      // AADHAAR VALIDATION
       // ==========================================================
 
       if (field === "aadhar") {
@@ -579,19 +617,15 @@
 
 
         /*
-         * IMPORTANT:
+         * Handles both typing and pasting.
          *
-         * If user pastes:
+         * Example:
          *
          * 12341234 1234
          *
-         * it becomes:
+         * becomes:
          *
          * 123412341234
-         *
-         * 
-         * We remove ALL non-digit characters.
-         * Then keep only the first 12 digits.
          */
 
         element.addEventListener(
@@ -605,6 +639,10 @@
               );
 
 
+            /*
+             * Keep maximum 12 digits.
+             */
+
             if (
               cleaned.length > 12
             ) {
@@ -613,6 +651,53 @@
                 cleaned.substring(
                   0,
                   12
+                );
+
+            }
+
+
+            element.value =
+              cleaned;
+
+          }
+        );
+
+      }
+
+
+      // ==========================================================
+      // PHONE NUMBER VALIDATION
+      // ==========================================================
+
+      if (field === "phone") {
+
+        element.addEventListener(
+          "input",
+          () => {
+
+            /*
+             * Allow only digits.
+             */
+
+            let cleaned =
+              element.value.replace(
+                /\D/g,
+                ""
+              );
+
+
+            /*
+             * Keep maximum 10 digits.
+             */
+
+            if (
+              cleaned.length > 10
+            ) {
+
+              cleaned =
+                cleaned.substring(
+                  0,
+                  10
                 );
 
             }
@@ -733,9 +818,11 @@
 
         updatePersonNumbers();
 
+
         /*
-         * After removing Person 1, the new Person 1
-         * should become the filename source.
+         * After removing Person 1,
+         * the new Person 1 becomes the
+         * filename source.
          */
 
         const fileNameInput =
@@ -743,11 +830,6 @@
             "fileName"
           );
 
-
-        /*
-         * Allow the filename to be regenerated
-         * from the new Person 1.
-         */
 
         if (fileNameInput) {
 
@@ -779,14 +861,12 @@
 
 
       /*
-       * Person 1 shows all fields.
+       * Person 1:
+       * All fields including Serial Number
+       * and Phone Number.
        *
-       * Persons 2 to 6 show only:
-       *
-       * Name
-       * Age
-       * Gender
-       * Aadhaar
+       * Persons 2-6:
+       * Name, Age, Gender and Aadhaar only.
        */
 
       const personFields =
@@ -810,7 +890,10 @@
           "form-row";
 
 
-        // Label
+        // ========================================================
+        // LABEL
+        // ========================================================
+
         const label =
           document.createElement("div");
 
@@ -823,7 +906,10 @@
           formatLabel(field);
 
 
-        // Input
+        // ========================================================
+        // INPUT
+        // ========================================================
+
         const input =
           createInput(
             field,
@@ -848,10 +934,12 @@
 
 
       /*
-       * Set filename after Person 1 is created.
+       * Set initial filename from Person 1.
        */
 
-      if (personNumber === 1) {
+      if (
+        personNumber === 1
+      ) {
 
         updateFileNameFromPerson1();
 
@@ -938,6 +1026,22 @@
 
 
       // ==========================================================
+      // PHONE
+      // ==========================================================
+
+      if (
+        rowData.phone &&
+        !/^\d{10}$/.test(
+          rowData.phone
+        )
+      ) {
+
+        valid = false;
+
+      }
+
+
+      // ==========================================================
       // EMAIL
       // ==========================================================
 
@@ -959,7 +1063,7 @@
 
       /*
        * Aadhaar must contain exactly
-       * 12 numeric digits.
+       * 12 digits.
        */
 
       if (
@@ -1037,10 +1141,34 @@
               "aadhar"
             ) {
 
-              /*
-               * Remove spaces and all
-               * non-digit characters.
-               */
+              value =
+                value.replace(
+                  /\D/g,
+                  ""
+                );
+
+
+              value =
+                value.substring(
+                  0,
+                  12
+                );
+
+
+              input.value =
+                value;
+
+            }
+
+
+            // ==================================================
+            // PHONE
+            // ==================================================
+
+            if (
+              input.dataset.field ===
+              "phone"
+            ) {
 
               value =
                 value.replace(
@@ -1049,14 +1177,10 @@
                 );
 
 
-              /*
-               * Keep maximum 12 digits.
-               */
-
               value =
                 value.substring(
                   0,
-                  12
+                  10
                 );
 
 
@@ -1130,7 +1254,7 @@
 
           alert(
             `Validation failed for Person ${i + 1}. ` +
-            `Check name, email, or Aadhaar.`
+            `Check name, phone, email, or Aadhaar.`
           );
 
           return;
@@ -1155,7 +1279,8 @@
 
 
       /*
-       * If filename is empty, use Person 1 name.
+       * If filename is empty,
+       * use Person 1 name.
        */
 
       if (!fileName) {
@@ -1168,8 +1293,7 @@
 
 
       /*
-       * Remove characters that are
-       * invalid in filenames.
+       * Remove invalid filename characters.
        */
 
       fileName =
@@ -1184,8 +1308,7 @@
 
 
       /*
-       * Prevent an empty filename after
-       * removing invalid characters.
+       * Prevent empty filename.
        */
 
       if (!fileName) {
@@ -1285,9 +1408,9 @@
         function () {
 
           /*
-           * Once the user edits the filename,
-           * stop automatically replacing it
-           * with Person 1's name.
+           * Once the user manually changes
+           * the filename, stop automatically
+           * replacing it with Person 1's name.
            */
 
           this.dataset.manuallyEdited =
