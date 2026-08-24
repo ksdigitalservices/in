@@ -469,8 +469,8 @@
 
           element.maxLength = 10;
 
-
         }
+
 
         // ========================================================
         // EMAIL
@@ -481,6 +481,7 @@
           element.type = "email";
 
         }
+
 
         // ========================================================
         // AGE / PEOPLE / PINCODE
@@ -494,6 +495,7 @@
           element.type = "number";
 
         }
+
 
         // ========================================================
         // EVERYTHING ELSE
@@ -524,21 +526,66 @@
       if (field === "name") {
 
         /*
-         * Trim leading and trailing spaces
-         * when leaving the field.
+         * Allow only:
+         *
+         * A-Z
+         * a-z
+         * spaces
+         *
+         * Remove:
+         *
+         * numbers
+         * dots
+         * commas
+         * hyphens
+         * apostrophes
+         * slashes
+         * @
+         * and every other special character.
          */
 
         element.addEventListener(
-          "blur",
+          "input",
           () => {
 
-            element.value =
-              element.value.trim();
+            let cleaned =
+              element.value.replace(
+                /[^a-zA-Z ]/g,
+                ""
+              );
 
 
             /*
-             * Person 1 name is used as the
-             * default filename.
+             * Convert multiple consecutive
+             * spaces into one space.
+             */
+
+            cleaned =
+              cleaned.replace(
+                /\s+/g,
+                " "
+              );
+
+
+            /*
+             * Remove leading spaces
+             * while typing.
+             */
+
+            cleaned =
+              cleaned.replace(
+                /^\s+/,
+                ""
+              );
+
+
+            element.value =
+              cleaned;
+
+
+            /*
+             * Person 1 name automatically
+             * updates the filename.
              */
 
             const firstCard =
@@ -567,13 +614,16 @@
 
 
         /*
-         * Update filename while typing
-         * Person 1's name.
+         * Final trim when leaving the field.
          */
 
         element.addEventListener(
-          "input",
+          "blur",
           () => {
+
+            element.value =
+              element.value.trim();
+
 
             const firstCard =
               document.querySelector(
@@ -676,7 +726,7 @@
           () => {
 
             /*
-             * Allow only digits.
+             * Allow digits only.
              */
 
             let cleaned =
@@ -1008,16 +1058,37 @@
         "string"
       ) {
 
+        /*
+         * Trim leading and trailing
+         * whitespace.
+         */
+
         rowData.name =
           rowData.name.trim();
 
       }
 
 
-      // Name required
+      /*
+       * Name must contain:
+       *
+       * - Alphabets only
+       * - Single spaces between words
+       *
+       * No:
+       * - numbers
+       * - dots
+       * - commas
+       * - hyphens
+       * - apostrophes
+       * - special characters
+       */
+
       if (
         !rowData.name ||
-        rowData.name.trim() === ""
+        !/^[A-Za-z]+(?: [A-Za-z]+)*$/.test(
+          rowData.name
+        )
       ) {
 
         valid = false;
@@ -1063,7 +1134,7 @@
 
       /*
        * Aadhaar must contain exactly
-       * 12 digits.
+       * 12 numeric digits.
        */
 
       if (
@@ -1122,6 +1193,33 @@
               "name"
             ) {
 
+              /*
+               * Remove all invalid characters.
+               */
+
+              value =
+                value.replace(
+                  /[^a-zA-Z ]/g,
+                  ""
+                );
+
+
+              /*
+               * Convert multiple spaces
+               * into a single space.
+               */
+
+              value =
+                value.replace(
+                  /\s+/g,
+                  " "
+                );
+
+
+              /*
+               * Trim first and last spaces.
+               */
+
               value =
                 value.trim();
 
@@ -1141,12 +1239,21 @@
               "aadhar"
             ) {
 
+              /*
+               * Remove everything except
+               * digits.
+               */
+
               value =
                 value.replace(
                   /\D/g,
                   ""
                 );
 
+
+              /*
+               * Keep only 12 digits.
+               */
 
               value =
                 value.substring(
