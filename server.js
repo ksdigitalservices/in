@@ -10,7 +10,7 @@ const TIMEZONE = "Asia/Kolkata";
 // MANUALLY SET BOOKING OPENING TIME HERE
 // =====================================
 const OPEN_HOUR = 21;     // 10 AM
-const OPEN_MINUTE = 24;    // 00 minutes
+const OPEN_MINUTE = 30;    // 00 minutes
 // =====================================
 
 function isBeforeOpeningTime() {
