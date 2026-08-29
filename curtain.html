@@ -1,14 +1,92 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Curtain</title>
-  <script>
-    setTimeout(function () {
-      window.location.replace("/shortcut");
-    }, 30000); // 120,000 ms = 2 minutes
-  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Booking Opens Soon</title>
+
+  <style>
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #111;
+      color: white;
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+
+    .container {
+      padding: 30px;
+    }
+
+    h1 {
+      font-size: 40px;
+    }
+
+    #countdown {
+      font-size: 30px;
+      font-weight: bold;
+      margin-top: 20px;
+    }
+  </style>
 </head>
+
 <body>
-  <!-- Your curtain page content -->
+
+  <div class="container">
+    <h1>Booking Opens Soon</h1>
+
+    <p>Please wait. Booking opens at 10:00 AM.</p>
+
+    <div id="countdown">
+      Loading...
+    </div>
+  </div>
+
+  <script>
+    function getIndiaTime() {
+      return new Date(
+        new Date().toLocaleString("en-US", {
+          timeZone: "Asia/Kolkata"
+        })
+      );
+    }
+
+    function updateCountdown() {
+      const now = getIndiaTime();
+
+      const target = new Date(now);
+      target.setHours(10, 0, 0, 0);
+
+      // If somehow it is already after 10 AM,
+      // redirect immediately.
+      if (now >= target) {
+        window.location.replace("/booking");
+        return;
+      }
+
+      const difference = target - now;
+
+      const hours = Math.floor(difference / (1000 * 60 * 60));
+      const minutes = Math.floor(
+        (difference % (1000 * 60 * 60)) / (1000 * 60)
+      );
+      const seconds = Math.floor(
+        (difference % (1000 * 60)) / 1000
+      );
+
+      document.getElementById("countdown").textContent =
+        `${hours}h ${minutes}m ${seconds}s`;
+    }
+
+    updateCountdown();
+
+    setInterval(updateCountdown, 1000);
+  </script>
+
 </body>
 </html>
