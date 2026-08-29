@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -33,6 +34,7 @@
       margin-top: 20px;
     }
   </style>
+
 </head>
 
 <body>
@@ -40,14 +42,31 @@
   <div class="container">
     <h1>Booking Opens Soon</h1>
 
-    <p>Please wait. Booking opens at 10:00 AM.</p>
+```
+<p id="message">Please wait. Booking opens soon.</p>
 
-    <div id="countdown">
-      Loading...
-    </div>
+<div id="countdown">
+  Loading...
+</div>
+```
+
   </div>
 
   <script>
+    // ==========================================
+    // MANUALLY SET BOOKING OPENING TIME HERE
+    // ==========================================
+
+    const OPEN_HOUR = 21;      // 10 AM
+    const OPEN_MINUTE = 30;     // 00 minutes
+
+    // Examples:
+    // 10:00 AM  -> OPEN_HOUR = 10, OPEN_MINUTE = 0
+    // 11:30 AM  -> OPEN_HOUR = 11, OPEN_MINUTE = 30
+    // 2:15 PM   -> OPEN_HOUR = 14, OPEN_MINUTE = 15
+    // 9:30 PM   -> OPEN_HOUR = 21, OPEN_MINUTE = 30
+
+
     function getIndiaTime() {
       return new Date(
         new Date().toLocaleString("en-US", {
@@ -56,36 +75,71 @@
       );
     }
 
+
     function updateCountdown() {
+
       const now = getIndiaTime();
 
+      // Create today's opening time
       const target = new Date(now);
-      target.setHours(10, 0, 0, 0);
 
-      // If somehow it is already after 10 AM,
-      // redirect immediately.
+      target.setHours(
+        OPEN_HOUR,
+        OPEN_MINUTE,
+        0,
+        0
+      );
+
+
+      // ==========================================
+      // OPENING TIME REACHED
+      // ==========================================
+
       if (now >= target) {
+
         window.location.replace("/booking");
+
         return;
       }
 
+
+      // ==========================================
+      // CALCULATE REMAINING TIME
+      // ==========================================
+
       const difference = target - now;
 
-      const hours = Math.floor(difference / (1000 * 60 * 60));
+      const hours = Math.floor(
+        difference / (1000 * 60 * 60)
+      );
+
       const minutes = Math.floor(
-        (difference % (1000 * 60 * 60)) / (1000 * 60)
+        (difference % (1000 * 60 * 60)) /
+        (1000 * 60)
       );
+
       const seconds = Math.floor(
-        (difference % (1000 * 60)) / 1000
+        (difference % (1000 * 60)) /
+        1000
       );
+
+
+      // ==========================================
+      // DISPLAY COUNTDOWN
+      // ==========================================
 
       document.getElementById("countdown").textContent =
         `${hours}h ${minutes}m ${seconds}s`;
     }
 
+
+    // Run immediately
     updateCountdown();
 
+
+    // Update every second
     setInterval(updateCountdown, 1000);
+
   </script>
 
 </body>
