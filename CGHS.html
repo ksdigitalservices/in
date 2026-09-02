@@ -335,6 +335,35 @@
     return el ? el.textContent.trim() : "";
   }
 
+  // Two-way live synchronization of the BEN ID on front and back.
+  function setupBenIdSync() {
+    const fields = document.querySelectorAll('.editable[data-key="benid"]');
+
+    fields.forEach(field => {
+      field.addEventListener("input", function () {
+        const value = this.textContent.trim();
+
+        fields.forEach(other => {
+          if (other !== this && other.textContent.trim() !== value) {
+            other.textContent = value;
+          }
+        });
+
+        if (typeof updateFrontQR === "function") {
+          updateFrontQR();
+        }
+      });
+
+      field.addEventListener("blur", function () {
+        const value = this.textContent.trim();
+        fields.forEach(other => {
+          if (other !== this) other.textContent = value;
+        });
+        if (typeof updateFrontQR === "function") updateFrontQR();
+      });
+    });
+  }
+
   function buildQRText() {
     const benId = getField("benid");
     const name = getField("name");
@@ -441,6 +470,8 @@
     loadImage("cghs_photoInput", ".beneficiary-photo");
     loadImage("cghs_qrInput", ".front .qr");
     loadImage("cghs_signatureInput", ".front .signature");
+
+    setupBenIdSync();
 
     // Generate a QR from the current fields when the page loads.
     // This makes the card stay synchronized with saved beneficiary details.
